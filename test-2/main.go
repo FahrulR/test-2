@@ -41,8 +41,8 @@ func CountCharControllers(w http.ResponseWriter, r *http.Request) {
 }
 
 func CountCharModel(input string) (int, int) {
-	check := []bool{false, false, false, false, false}
 	var countC, countV int
+	check := []bool{false, false, false, false, false}
 	input = strings.ToLower(input)
 	input = strings.Replace(input, " ", "", -1)
 	for _, str := range input {
