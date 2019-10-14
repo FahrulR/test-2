@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-type countStruct struct {
+type CountStruct struct {
 	Consonants int
 	Vowels     int
 }
@@ -26,8 +26,8 @@ func CountCharControllers(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
 		input := r.FormValue("input")
 		consonants, vowels := CountCharModel(input)
-		data := []countStruct{
-			countStruct{consonants, vowels},
+		data := []CountStruct{
+			CountStruct{consonants, vowels},
 		}
 		result, err := json.Marshal(data)
 		if err != nil {
@@ -42,7 +42,6 @@ func CountCharControllers(w http.ResponseWriter, r *http.Request) {
 
 func CountCharModel(input string) (int, int) {
 	check := []bool{false, false, false, false, false}
-	f.Println(input)
 	var countC, countV int
 	input = strings.ToLower(input)
 	input = strings.Replace(input, " ", "", -1)
